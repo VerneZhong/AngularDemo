@@ -1,2 +1,51 @@
-<app-header />
+<app-header/>
 <p>{{title}}</p>
+<h3>{{msg}}</h3>
+<h4>{{username}}</h4>
+<h5>{{student}}</h5>
+<hr/>
+<h5>{{userinfo.username}} or {{userinfo.age}}</h5>
+<div>{{message}}</div>
+<h2>angular模板里面绑定属性</h2>
+<div title="{{title}}">
+  鼠标喵上去看一下。
+</div>
+
+<!-- 绑定动态属性 -->
+<div [title]="student">
+  钟学斌
+</div>
+
+<!-- 解析html标签 -->
+<div>
+  <span [innerHTML]="content" class="red"></span>
+</div>
+
+<!-- angular模板里允许做简单运算 -->
+1+2={{1+2}}
+
+<!-- angular的数据循环 -->
+<ul>
+  <li *ngFor="let item of arr">
+    {{item}}
+  </li>
+  <li *ngFor="let user of userList">
+    {{user.username}} & {{user.age}}
+  </li>
+</ul>
+
+<br>
+<ul>
+  <li *ngFor="let c of cars">
+      <h3>{{c.car}}</h3>
+    <ol>
+      <li *ngFor="let ci of c.list">
+        <h4>{{ci.title}}&{{ci.price}}</h4>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<br>
+<br>
+<br>
