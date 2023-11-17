@@ -1,1 +1,74 @@
-<p>我是Home组件</p>
+<h2>引入图片</h2>
+
+<!--<img src="assets/images/111.jpeg" alt="收藏" />-->
+
+<!--<img [src]="jkUrl" />-->
+
+<hr/>
+
+<h2>循环数据 显示数据索引（key）</h2>
+<ul>
+  <li *ngFor="let item of list; let key=index;">
+    <span *ngIf="key!=1" class="green">{{item.title}} --- {{key}}</span>
+    <span *ngIf="key==1" class="red">{{item.title}} --- {{key}}</span>
+  </li>
+</ul>
+
+<h2>条件判断语句 *ngIf</h2>
+<div *ngIf="flag">
+  <img src="assets/images/111.jpeg" alt="">
+</div>
+<div *ngIf="!flag">
+  <img [src]="jkUrl"/>
+</div>
+
+<br/>
+
+<ul [ngSwitch]="orderStatus">
+  <li *ngSwitchCase="1">已支付</li>
+  <li *ngSwitchCase="2">订单已确认</li>
+  <li *ngSwitchCase="3">已发货</li>
+  <li *ngSwitchDefault>无效</li>
+</ul>
+
+<h2>属性[ngClass]、[ngStyle]</h2>
+<div class="red">ngClass演示(尽量不用dom来改变class)</div>
+<div [ngClass]="{'red': false, 'green': true}">ngClass演示(尽量不用dom来改变class)</div>
+<div [ngClass]="{'blue': flag, 'red': !flag}">ngClass演示(尽量不用dom来改变class)</div>
+
+<strong>循环数组，让数组第一个元素的样式为red</strong>
+<ul>
+  <li *ngFor="let item of list; let key = index;" [ngClass]="{'red':key==0, 'blue':key==1, 'green':key==2}">
+    {{key}}---{{item.title}}
+  </li>
+</ul>
+<br/>
+<p style="color:red;">我是p标签</p>
+<p [ngStyle]="{'color': attr}">我是p标签</p>
+
+<h2>管道</h2>
+<p>{{today | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+
+<h2>事件</h2>
+<strong>{{title}}</strong>
+<br>
+<button (click)="runCommand()">执行事件</button>
+<br>
+<button (click)="getData()">获取数据</button>
+<br>
+<button (click)="setData()">修改数据</button>
+
+<br>
+<button (click)="runEvent($event)">执行方法获取事件对象</button>
+<h2>表单事件 事件对象</h2>
+keyDown
+<input type="text" (keydown)="keyDown($event)" />
+<br>
+keyUp:
+<input type="text" (keyup)="keyUp($event)" />
+
+<h2>双向数据绑定--MVM 只是针对表单</h2>
+<input type="text" [(ngModel)]='keywords' />
+{{keywords}}
+<br>
+<button (click)="changeKeyWords($event)">改变keywords值</button>
